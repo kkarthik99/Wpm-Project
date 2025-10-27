@@ -1,150 +1,192 @@
-🌴 AI Travel Planner
-A full-stack AI-powered travel planning platform built with the MEAN stack (MongoDB, Express.js, Angular, Node.js) and Google Gemini AI integration. Create personalized travel itineraries instantly using natural language prompts.
+AI Travel Planner 🌴
 
-✨ Features
-🤖 AI-Powered Planning: Generate detailed travel plans using Google Gemini AI
+AI Travel Planner is a full-stack, AI-powered travel planning platform built with the MEAN stack (MongoDB, Express, Angular, Node) and Google Gemini AI integration. Create personalised travel itineraries instantly using natural language prompts.
 
-🎨 Beautiful UI: Glass morphism design with stunning travel imagery
+✨ Highlights
 
-🔐 Secure Authentication: JWT-based user registration and login
+AI-Powered Planning: Generate detailed, day-by-day itineraries using Google Gemini AI (Gemini 2.0 Flash).
 
-💰 Smart Budgeting: AI calculates and allocates travel budgets
+Beautiful UI: Glass-morphism design with rich travel imagery and smooth animations.
 
-📱 Responsive Design: Works seamlessly on all devices
+Secure Authentication: JWT-based registration & login with bcrypt password hashing.
 
-⚡ Real-time Processing: Instant travel plan generation
+Smart Budgeting: AI calculates and allocates budgets for transport, lodging, food and activities.
 
-🛠️ Tech Stack
+Responsive: Works across desktop, tablet and mobile.
+
+Real-time: Instant travel plan generation and saving.
+
+🧭 Features
+
+Natural-language trip description → instant itinerary
+
+Multi-person & multi-day planning (e.g., "2 people, 7 days, 1 lakh budget, Goa beaches & nightlife")
+
+Budget breakdown and suggested activities
+
+Save, edit and share trip plans
+
+Role-based auth and secure session handling
+
+Input validation and CORS protection
+
+System logging for monitoring
+
+🛠 Tech Stack
+
 Frontend: Angular 20, TypeScript, Bootstrap 5, RxJS
 
-Backend: Node.js, Express.js, JWT, bcryptjs
+Backend: Node.js, Express.js, bcryptjs, jsonwebtoken (JWT)
 
-Database: MongoDB with Mongoose
+Database: MongoDB + Mongoose
 
-AI Integration: Google Gemini AI 2.0 Flash
+AI: Google Gemini AI 2.0 Flash (via API)
 
-Styling: CSS3, Glass Morphism, Animations
+Styling: CSS3, Glass Morphism + animations
 
 🚀 Quick Start
 Prerequisites
-Node.js (v18 or higher)
+
+Node.js v18 or higher
 
 MongoDB (local or Atlas)
 
 Google Gemini API key
 
-Installation
-Clone the repository
+Install & Run
 
-bash
+Clone the repo
+
 git clone <repository-url>
+
 cd aitravel
-Backend Setup
 
-bash
+Backend
+
 cd backend
-npm install
-Frontend Setup
 
-bash
+npm install
+
+Create a file named backend/.env with the environment variables (see below)
+
+Start the backend (development): npm run dev
+
+Frontend
+
 cd ../frontend
+
 npm install
-Environment Configuration
 
-Backend: Create backend/.env
+Start Angular dev server: ng serve
 
-env
-MONGODB_URI=mongodb://localhost:27017/aitravel
-GEMINI_API_KEY=your_gemini_api_key_here
-JWT_SECRET=your_jwt_secret_here
-PORT=5000
-Run the Application
+Frontend runs at http://localhost:4200
 
-Terminal 1 (Backend):
+APIs
 
-bash
-cd backend
-npm run dev
-Terminal 2 (Frontend):
+Backend API base: http://localhost:5000
 
-bash
-cd frontend
-ng serve
-Access the Application
+⚙ Environment Variables
 
-Frontend: http://localhost:4200
+Create backend/.env with the following keys:
 
-Backend API: http://localhost:5000
+MONGODB_URI = mongodb://localhost:27017/aitravel (or your Atlas connection string)
+
+GEMINI_API_KEY = your_gemini_api_key_here
+
+JWT_SECRET = your_jwt_secret_here
+
+PORT = 5000
 
 📁 Project Structure
-text
+
 aitravel/
-├── backend/
-│   ├── models/          # MongoDB schemas
-│   ├── routes/          # API routes
-│   ├── middleware/      # Authentication
-│   └── server.js        # Main server file
-├── frontend/
-│   ├── src/app/
-│   │   ├── components/  # Angular components
-│   │   ├── services/    # API services
-│   │   └── models/      # TypeScript interfaces
-│   └── assets/          # Images and static files
-🗄️ Database Collections
-users: User accounts and authentication
 
-trips: AI-generated travel plans and itineraries
+backend/
 
-destinations: Travel destination information
+models/ — MongoDB schemas
 
-user_sessions: Authentication sessions
+routes/ — API routes
 
-system_logs: Application monitoring
+middleware/ — auth & input validation
 
-🔧 API Endpoints
-POST /api/auth/signup - User registration
+server.js — main server
 
-POST /api/auth/login - User authentication
+frontend/
 
-POST /api/trip/generate - Generate travel plans
+src/app/
 
-🎯 Usage
-Sign Up/Login: Create an account or login
+components/ — Angular components
 
-Describe Your Trip: Enter travel requirements in natural language
+services/ — API services
 
-Example: "2 people, 7 days, 1 lakh budget, Goa beaches and nightlife"
+models/ — TypeScript interfaces
 
-Get AI Plan: Receive detailed itinerary with budget, activities, and tips
+assets/ — images & static files
 
-Save & Share: Save plans for future reference
+🗄 Database Collections
 
-🔐 Security Features
-Password encryption with bcrypt
+users — user accounts and auth info
 
-JWT token authentication
+trips — AI-generated travel plans and saved itineraries
 
-Input validation and sanitization
+destinations — destination metadata and assets
 
-CORS protection
+user_sessions — active sessions and tokens
 
-Environment variable security
+system_logs — monitoring & error logs
 
-🌟 Future Enhancements
-Mobile application
+📡 Key API Endpoints
 
-Hotel and flight booking integration
+POST /api/auth/signup — register new user
 
-Travel community features
+POST /api/auth/login — authenticate user (returns JWT)
+
+POST /api/trip/generate — generate trip plan from natural language input
+
+GET /api/trip/:id — fetch saved trip
+
+POST /api/trip/save — persist generated trip (requires auth)
+
+🔐 Security
+
+Passwords hashed with bcrypt
+
+JWT-based auth and protected routes
+
+Input validation and sanitisation to prevent injection
+
+CORS configured for front-end domain
+
+Secrets stored in environment variables, not in source
+
+🧪 Example Usage (flow)
+
+Sign up / Login.
+
+Enter your trip prompt (examples: "2 people, 5 days, ₹60,000, Goa beaches & food").
+
+AI returns itinerary: day-by-day plan, budget breakdown, places & tips.
+
+Save the plan to your account and share a public link if desired.
+
+📈 Future Enhancements
+
+Mobile app (iOS / Android)
+
+Hotel & flight booking integrations (OTA APIs)
+
+Social & community features (user-shared itineraries, ratings)
 
 Multi-language support
 
-Offline functionality
-
-📄 License
-This project is for educational and personal use.
+Offline caching & progressive web app support
 
 🤝 Contributing
-Contributions, issues, and feature requests are welcome!
 
-Built with ❤️ using MEAN Stack & AI Magic ✨
+Contributions are welcome. Open issues or submit PRs for features, bugfixes or UI improvements. Please follow conventional commits and add clear descriptions for AI prompt changes.
+
+📄 License
+
+This project is for educational and personal use. See LICENSE for details.
+
+Built with ❤️ using the MEAN stack + Google Gemini AI. Enjoy
