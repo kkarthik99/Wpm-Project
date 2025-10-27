@@ -1,0 +1,147 @@
+/* You can add global styles to this file, and also import other style files */
+/* === DESIGN SYSTEM === */
+:root {
+  /* Color System */
+  --primary: #2563eb;
+  --primary-dark: #1d4ed8;
+  --success: #10b981;
+  --warning: #f59e0b;
+  --info: #0ea5e9;
+  --danger: #ef4444;
+  --dark: #1f2937;
+  --light: #f8fafc;
+  
+  /* Typography */
+  --font-heading: 'Poppins', sans-serif;
+  --font-body: 'Inter', sans-serif;
+}
+
+/* Global Styles */
+body {
+  font-family: var(--font-body);
+  background-color: #f8fafc;
+  color: #374151;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  font-weight: 600;
+}
+
+/* Custom Card Styles */
+.travel-card {
+  border: none;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  transition: all 0.3s ease;
+}
+
+.travel-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+/* Section Headers */
+.section-header {
+  background: linear(135deg, var(--primary), var(--primary-dark));
+  color: white;
+  border-radius: 12px 12px 0 0;
+  padding: 1rem 1.5rem;
+}
+
+/* Budget Progress Bars */
+.budget-bar {
+  height: 8px;
+  border-radius: 4px;
+  background: #e5e7eb;
+  overflow: hidden;
+}
+
+.budget-progress {
+  height: 100%;
+  border-radius: 4px;
+  transition: width 0.5s ease;
+}
+
+/* Timeline for Itinerary */
+.timeline {
+  position: relative;
+  padding-left: 2rem;
+}
+
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: var(--primary);
+  border-radius: 1px;
+}
+
+.timeline-item {
+  position: relative;
+  margin-bottom: 1.5rem;
+}
+
+.timeline-item::before {
+  content: '';
+  position: absolute;
+  left: -2rem;
+  top: 0.25rem;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--primary);
+  border: 3px solid white;
+  box-shadow: 0 0 0 2px var(--primary);
+}
+
+/* Activity Grid */
+.activity-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+}
+
+.activity-card {
+  background: white;
+  padding: 1rem;
+  border-radius: 8px;
+  border-left: 4px solid var(--warning);
+  transition: all 0.3s ease;
+}
+
+.activity-card:hover {
+  transform: translateX(4px);
+}
+
+/* Hotel Cards */
+.hotel-card {
+  border-left: 4px solid var(--success);
+}
+
+/* Tip Cards */
+.tip-card {
+  border-left: 4px solid var(--info);
+}
+
+/* Custom Buttons */
+.btn-travel {
+  border-radius: 8px;
+  font-weight: 500;
+  padding: 0.5rem 1.5rem;
+  transition: all 0.3s ease;
+}
+
+.btn-travel-primary {
+  background: var(--primary);
+  border-color: var(--primary);
+}
+
+.btn-travel-primary:hover {
+  background: var(--primary-dark);
+  transform: translateY(-1px);
+}
+

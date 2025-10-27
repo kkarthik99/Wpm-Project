@@ -1,0 +1,111 @@
+<div class="trip-planner-container">
+  <!-- Background Slideshow -->
+  <div class="background-slideshow">
+    <div class="background-slide" [style.backgroundImage]="'url(assets/images/beach11.jpg)'" [class.active]="currentBackground === 0"></div>
+    <div class="background-slide" [style.backgroundImage]="'url(assets/images/mountain.jpeg)'" [class.active]="currentBackground === 1"></div>
+    <div class="background-slide" [style.backgroundImage]="'url(assets/images/forest.jpeg)'" [class.active]="currentBackground === 2"></div>
+    <div class="background-slide" [style.backgroundImage]="'url(assets/images/nightlife.jpeg)'" [class.active]="currentBackground === 3"></div>
+  </div>
+
+  <!-- Dark Overlay -->
+  <div class="dark-overlay"></div>
+
+  <!-- Main Content -->
+  <div class="content-container">
+    <!-- Header -->
+    <header class="app-header">
+      <div class="header-left">
+        <h1>✈️ AI Travel Planner</h1>
+        <p>Your personal travel assistant</p>
+      </div>
+      <div class="user-section">
+        <span class="user-welcome">Welcome, {{ currentUser?.name }}! 👋</span>
+        <button class="logout-btn" (click)="logout()">
+          Logout
+        </button>
+      </div>
+    </header>
+
+    <!-- Main Planning Card -->
+    <div class="glass-card main-planning-card">
+      <div class="card-header">
+        <h3>
+          <i class="bi bi-compass me-2"></i>
+          Plan Your Dream Trip
+        </h3>
+        <p>Describe your travel preferences and let AI create the perfect itinerary</p>
+      </div>
+      
+      <div class="card-body">
+        <form (ngSubmit)="onSubmit()">
+          <div class="form-group">
+            <textarea 
+              class="form-control" 
+              rows="4"
+              [(ngModel)]="prompt"
+              name="prompt"
+              placeholder="Example: 2 people, 5 days, ₹50,000 budget, beach vacation in Goa with adventure activities"
+              [disabled]="isLoading"></textarea>
+          </div>
+
+          <div class="button-group">
+            <button 
+              type="submit" 
+              class="submit-btn primary"
+              [disabled]="isLoading || !prompt.trim()">
+              <span *ngIf="isLoading" class="spinner"></span>
+              <i class="bi bi-stars me-2" *ngIf="!isLoading"></i>
+              {{ isLoading ? 'Crafting Your Journey...' : 'Generate Travel Plan' }}
+            </button>
+            
+            <button 
+              type="button" 
+              class="submit-btn secondary"
+              (click)="clearForm()"
+              [disabled]="isLoading">
+              <i class="bi bi-arrow-clockwise me-2"></i>
+              Clear
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Error Message -->
+    <div *ngIf="error" class="glass-card error-card">
+      <div class="error-content">
+        <i class="bi bi-exclamation-triangle-fill me-2"></i>
+        <span>{{ error }}</span>
+        <button class="close-btn" (click)="error = ''">×</button>
+      </div>
+    </div>
+
+    <!-- Results Section -->
+    <div *ngIf="travelPlan" class="results-section">
+      <!-- Results Header -->
+      <div class="glass-card results-header-card">
+        <div class="results-header">
+          <div class="header-content">
+            <h2>✨ Personalized Journey</h2>
+            <p>Tailored specifically for your preferences</p>
+          </div>
+          <div class="header-actions">
+            <button class="action-btn primary">
+              <i class="bi bi-download me-2"></i>Save Plan
+            </button>
+            <button class="action-btn success" (click)="clearForm()">
+              <i class="bi bi-plus-circle me-2"></i>New Plan
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Travel Plan Content -->
+      <div class="glass-card results-content-card">
+        <div class="travel-plan-content">
+          <pre>{{ travelPlan }}</pre>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
