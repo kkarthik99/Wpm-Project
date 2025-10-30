@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # AI Travel Planner 🌴
 
 AI Travel Planner is a full-stack, AI-powered travel planning platform built with the **MEAN stack** (MongoDB, Express, Angular, Node) and **Google Gemini AI** integration.  
@@ -153,3 +154,7 @@ aitravel/
 
 Contributions, issues, and feature requests are welcome!  
 Built with ❤️ using the **MEAN Stack** & **Google Gemini AI** ✨
+=======
+# Wpm-Project
+WPM PROJECT - Ai Travel Planner
+>>>>>>> 04e71f8 (Atlas Added)
